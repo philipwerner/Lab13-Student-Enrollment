@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace StudentEnrollment.Models
 {
-    public class CourseStudentsViewModel
+    public class CourseViewModel
     {
         public List<Course> courses;
-        public SelectList course;
-        public string CourseName { get; set; };
+        public SelectList name;
+        public string CourseName { get; set; }
     }
 }
