@@ -1,0 +1,14 @@
+﻿@model StudentEnrollment.Models.Student
+@{
+}
+<h2>Student Details</h2>
+
+<h4>Student</h4>
+<dl>
+    <dt>@Html.DisplayFor(student => student.FirstName)</dt>
+    <dt>@Html.DisplayFor(student => student.LastName)</dt>
+    <dt>@Html.DisplayFor(student => student.Course)/dt>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.ID">Edit Student</a>
+<a asp-action="Index">Back to Student Home</a> 

@@ -1,0 +1,18 @@
+﻿@model StudentEnrollment.Models.Student
+@{
+}
+<h2>Remove Student</h2>
+
+<h3>Are you sure you want to remove this student?</h3>
+<h4>Student</h4>
+<dl>
+    <dt>@Html.DisplayFor(student => student.FirstName)</dt>
+    <dt>@Html.DisplayFor(student => student.LastName)</dt>
+    <dt>@Html.DisplayFor(student => student.Course)</dt>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="ID" />
+    <input type="submit" value="Delete" />
+    <a asp-action="Index">Back to Student Home</a>
+</form>

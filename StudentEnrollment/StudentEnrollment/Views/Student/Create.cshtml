@@ -1,0 +1,23 @@
+﻿@model StudentEnrollment.Models.Student
+@{ }
+<h2>Create New Student</h2>
+<form asp-action="Create">
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName" />
+    <span asp-validation-for="FirstName"></span>
+
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" />
+    <span asp-validation-for="LastName"></span>
+
+    <label asp-for="Course"></label>
+    <input asp-for="Course" />
+    <span asp-validation-for="Course"></span>
+
+    <input type="submit" value="Create New Student" />
+</form>
+
+<a asp-action="Index">Return to Courses</a>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

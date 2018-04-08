@@ -14,6 +14,12 @@ namespace StudentEnrollment
 {
     public class Startup
     {
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -21,8 +27,11 @@ namespace StudentEnrollment
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<CourseContext>(options =>
-                     options.UseSqlServer(Configuration.GetConnectionString("CourseContext")));
+
+            services.AddDbContext<SchoolContext>(options =>
+                     options.UseSqlServer(Configuration.GetConnectionString("SchoolContext")));
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

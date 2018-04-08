@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace StudentEnrollment.Data
 {
-    public class StudentContext : DbContext
+    public class SchoolContext : DbContext
     {
-        public StudentContext (DbContextOptions<StudentContext> options) : base(options)
+        public SchoolContext (DbContextOptions<SchoolContext> options) : base(options)
         {
 
         }
 
+        public DbSet<StudentEnrollment.Models.Course> Course { get; set; }
         public DbSet<StudentEnrollment.Models.Student> Student { get; set; }
     }
 }

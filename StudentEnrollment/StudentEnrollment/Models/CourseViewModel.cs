@@ -9,6 +9,7 @@ namespace StudentEnrollment.Models
     public class CourseViewModel
     {
         public List<Course> courses;
+        public List<Student> students;
         public SelectList name;
         public string CourseName { get; set; }
     }

@@ -12,9 +12,9 @@ namespace StudentEnrollment.Controllers
 {
     public class CourseController : Controller
     {
-        private readonly Data.CourseContext _context;
+        private readonly Data.SchoolContext _context;
 
-        public CourseController(CourseContext context)
+        public CourseController(SchoolContext context)
         {
             _context = context;
         }

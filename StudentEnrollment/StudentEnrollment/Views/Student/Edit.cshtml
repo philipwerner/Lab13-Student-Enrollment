@@ -1,0 +1,27 @@
+﻿@model StudentEnrollment.Models.Student
+@{
+}
+<h2>Edit Student Information</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="ID" />
+
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName" />
+    <span asp-validation-for="FirstName"></span>
+
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" />
+    <span asp-validation-for="LastName"></span>
+
+    <label asp-for="Course"></label>
+    <input asp-for="Course" />
+    <span asp-validation-for="Course"></span>
+
+    <input type="submit" value="Save Student" />
+</form>
+
+<a asp-action="Index">Back to Student Home</a>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
