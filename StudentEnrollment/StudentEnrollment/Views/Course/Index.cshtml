@@ -34,6 +34,7 @@
             <td>@Html.DisplayFor(modelItem => prop.Instructor)</td>
 
             <td>
+                <a asp-action="Enrolled" asp-route-id="@prop.ID">View Students</a> |
                 <a asp-action="Edit" asp-route-id="@prop.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@prop.ID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@prop.ID">Delete</a>

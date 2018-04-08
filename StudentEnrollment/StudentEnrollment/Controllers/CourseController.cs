@@ -45,6 +45,30 @@ namespace StudentEnrollment.Controllers
             return View(courseNamesVM);
         }
 
+        public async Task<IActionResult> Enrolled(string course, string searchString)
+        {
+            IQueryable<string> enrolledQuery = from e in _context.Student
+                                               orderby e.Course
+                                               select e.Course;
+
+            var enrolled = from e in _context.Student
+                           select e;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                enrolled = enrolled.Where(e => e.Course.Contains(searchString));
+            }
+            if (!String.IsNullOrEmpty(course))
+            {
+                enrolled = enrolled.Where(e => e.Course == course);
+            }
+
+            var studentsVM = new StudentViewModel();
+            studentsVM.firstName = new SelectList(await enrolledQuery.Distinct().ToListAsync());
+            studentsVM.students = await enrolled.ToListAsync();
+
+            return View(studentsVM);
+        }
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -69,7 +93,7 @@ namespace StudentEnrollment.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Level")] Course course)
+        public async Task<IActionResult> Create([Bind("Name,Level,Instructor")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +123,7 @@ namespace StudentEnrollment.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Level")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Level,Instructor")] Course course)
         {
             if (id != course.ID)
             {
@@ -124,7 +148,7 @@ namespace StudentEnrollment.Controllers
                     }
                 }
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
 
             }
 

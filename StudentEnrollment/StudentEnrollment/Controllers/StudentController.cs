@@ -124,7 +124,7 @@ namespace StudentEnrollment.Controllers
                     }
                 }
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
 
             }
 
