@@ -14,5 +14,10 @@ namespace StudentEnrollment.Models
         [StringLength(30, MinimumLength = 1)]
         [Required]
         public string Name { get; set; }
+
+        [Required]
+        public int Level { get; set; }
+
+        public string Instructor { get; set; }
     }
 }
