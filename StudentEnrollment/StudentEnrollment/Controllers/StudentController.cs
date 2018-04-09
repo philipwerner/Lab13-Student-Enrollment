@@ -99,7 +99,7 @@ namespace StudentEnrollment.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,Course")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Course")] Student student)
         {
             if (id != student.ID)
             {

@@ -11,6 +11,7 @@ namespace StudentEnrollment.Models
         public List<Course> courses;
         public List<Student> students;
         public SelectList name;
+        public SelectList student;
         public string CourseName { get; set; }
     }
 }

@@ -53,6 +53,7 @@ namespace StudentEnrollment.Controllers
 
             var enrolled = from e in _context.Student
                            select e;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 enrolled = enrolled.Where(e => e.Course.Contains(searchString));
@@ -62,8 +63,8 @@ namespace StudentEnrollment.Controllers
                 enrolled = enrolled.Where(e => e.Course == course);
             }
 
-            var studentsVM = new StudentViewModel();
-            studentsVM.firstName = new SelectList(await enrolledQuery.Distinct().ToListAsync());
+            var studentsVM = new CourseViewModel();
+            studentsVM.student = new SelectList(await enrolledQuery.Distinct().ToListAsync());
             studentsVM.students = await enrolled.ToListAsync();
 
             return View(studentsVM);
@@ -123,7 +124,7 @@ namespace StudentEnrollment.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Level,Instructor")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Level,Instructor")] Course course)
         {
             if (id != course.ID)
             {
