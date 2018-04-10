@@ -1,0 +1,14 @@
+﻿@model StudentEnrollment.Models.Course
+@{
+}
+<h2>Course Details</h2>
+
+<h4>Course</h4>
+<dl>
+    <dt>@Html.DisplayFor(course => course.Name)</dt>
+    <dt>@Html.DisplayFor(course => course.Level)</dt>
+    <dt>@Html.DisplayFor(course => course.Instructor)</dt>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.ID">Edit Course</a> |
+<a asp-action="Index">Back to Course Home</a> 

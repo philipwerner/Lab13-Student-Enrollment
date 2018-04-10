@@ -1,0 +1,44 @@
+﻿@model StudentEnrollment.Models.StudentViewModel
+@{
+}
+
+<h2>Student Management</h2>
+<p><a asp-action="Create">Create New Student</a></p>
+
+<form asp-controller="Student" asp-action="Index" method="get">
+    <p>
+        <select asp-for="StudentName" asp-items="Model.firstName">
+            <option value="">All</option>
+        </select>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.students[0].FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.students[0].LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.students[0].Course)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var prop in Model.students)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => prop.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => prop.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => prop.Course)</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@prop.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@prop.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@prop.ID">Delete</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
