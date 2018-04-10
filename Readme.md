@@ -1,6 +1,9 @@
 # Lab13 Student Enrollment
 
 ## MVC Movie App
+
+https://studentenrollment.azurewebsites.net/
+
 This is a student enrollment app that lets you create, edit, and delete both
 courses and students. When there are either students or courses in the database,
 while viewing the list on the index page you are able to select whether you 
