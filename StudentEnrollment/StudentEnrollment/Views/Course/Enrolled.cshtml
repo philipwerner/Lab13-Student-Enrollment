@@ -1,14 +1,36 @@
-﻿@model StudentEnrollment.Models.Student
+﻿@model StudentEnrollment.Models.StudentViewModel
 @{
 }
 <h2>Enrolled Students</h2>
 
 <h4>Student</h4>
-<dl>
-    <dt>@Html.DisplayFor(student => student.FirstName)</dt>
-    <dt>@Html.DisplayFor(student => student.LastName)</dt>
-    <dt>@Html.DisplayFor(student => student.Course)</dt>
-</dl>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.students[0].FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.students[0].LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.students[0].Course)</th>
+        </tr>
+    </thead>
 
-<a asp-action="Edit" asp-route-id="@Model.ID">Edit Student</a>
+    <tbody>
+        @foreach (var prop in Model.students)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => prop.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => prop.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => prop.Course)</td>
+
+                <td>
+                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@prop.ID">Edit</a> |
+                    <a asp-controller="Student" asp-action="Details" asp-route-id="@prop.ID">Details</a> |
+                    <a asp-controller="Student" asp-action="Delete" asp-route-id="@prop.ID">Delete</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
 <a asp-action="Index">Back to Course Home</a>
